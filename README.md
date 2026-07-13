@@ -16,3 +16,10 @@ For instance, Visual Studio for Mac support stops at .NET 8, thus, we needed som
 Open this repo's folder in VSCode/Codespaces, it might immediately propose you to re-open it in a Dev Container or you can click on `Remote Explorer`, find plus button and choose the `Open Current Folder in Container` option and wait when it is ready.
 
 When your Dev Container is ready, the VSCode window will be re-opened. Open a new terminal in this Dev Container which will be executing the commands under this prepared Linux container where we already have all pre-installed and pre-configured development related dependencies.
+
+### Run E2E Tests
+
+To run Karate E2E tests execute the following script in Terminal:
+```cli
+java -jar /karate.jar .
+```
