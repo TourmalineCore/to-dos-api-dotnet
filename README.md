@@ -23,3 +23,10 @@ To run Karate E2E tests execute the following script in Terminal:
 ```cli
 java -jar /karate.jar .
 ```
+
+### Run E2E Tests in Docker Compose
+
+To run Karate E2E tests using Docker Compose execute the following script in Terminal:
+```cli
+docker compose up --build --exit-code-from to-dos-api-dotnet-karate-tests
+```
