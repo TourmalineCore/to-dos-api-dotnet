@@ -13,4 +13,9 @@
   "editor.matchBrackets": "never",
   "workbench.statusBar.visible": false,
   // --- Presentation Style Settings ---
+  "remote.extensionKind": {
+    "ms-azuretools.vscode-containers": [
+      "workspace"
+    ],
+  },
 }
