@@ -28,5 +28,5 @@ java -jar /karate.jar .
 
 To run Karate E2E tests using Docker Compose execute the following script in Terminal:
 ```cli
-docker compose up --build --exit-code-from to-dos-api-dotnet-karate-tests
+docker compose up --build --exit-code-from to-dos-api-dotnet-e2e-tests
 ```

@@ -1,12 +1,12 @@
 services:
-  to-dos-api-dotnet-karate-tests:
-    container_name: 'to-dos-api-dotnet-karate-tests'
+  to-dos-api-dotnet-e2e-tests:
+    container_name: to-dos-api-dotnet-e2e-tests
     build:
       context: ./e2e
       dockerfile: ./Dockerfile
-    command: run ./e2e
+    command: run ./e2e-copy
     volumes:
-      - ./e2e:/e2e
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e:/e2e-copy
     networks:
       - to-dos-api-dotnet-network
 

@@ -13,4 +13,7 @@
       ]
     }
   },
+  "containerEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
 }
