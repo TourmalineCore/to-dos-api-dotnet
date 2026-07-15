@@ -1,0 +1,6 @@
+{
+  "name": "Dev Container of to-dos-api-dotnet",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+}

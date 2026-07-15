@@ -1,5 +1,10 @@
 {
   "recommendations": [
+    // Dev Containers extension is essential to enable your cross-platform reproducible DevExp
+    "ms-vscode-remote.remote-containers",
+    // Optional yet unified keybindings schema extension
+    // IntelliJ IDEA Keybindings
+    // It allows to use the same tricks from IntelliJ IDEA in VSCode if you used to them as I do
     "k--kato.intellij-idea-keybindings",
   ]
 }
