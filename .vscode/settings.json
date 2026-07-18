@@ -7,10 +7,18 @@
   "editor.fontFamily": "Source Code Pro",
   "workbench.colorTheme": "Default High Contrast",
   "editor.fontSize": 14,
-  "window.zoomLevel": 3,
+  // "window.zoomLevel": 3,
   "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.minimap.enabled": false,
   "editor.matchBrackets": "never",
   "workbench.statusBar.visible": false,
   // --- Presentation Style Settings ---
+  "remote.extensionKind": {
+    "k--kato.intellij-idea-keybindings": [
+      "ui"
+    ],
+    "ms-azuretools.vscode-containers": [
+      "workspace"
+    ],
+  },
 }
