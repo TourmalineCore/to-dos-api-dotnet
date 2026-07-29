@@ -1,0 +1,22 @@
+services:
+  to-dos-api-dotnet-e2e-tests:
+    # if you specify container_name it provides a pretty name of the container in Docker Desktop
+    # visually it shows e2e-tests sub-container name inside of to-dos-api-dotnet parent container
+    container_name: 'to-dos-api-dotnet-e2e-tests'
+    build:
+      context: ./e2e
+      dockerfile: ./Dockerfile
+    # we pass the tests folder path as an argument to the docker container's entrypoint
+    command: run ./e2e-copy
+    volumes:
+      # this is needed so that we can spin it up from within Dev Container where LOCAL_WORKSPACE_FOLDER is defined and leads to the absolute OS local path of the folder
+      # wihtout this, if we simply use ./e2e from within Dev Container we have this path /workspaces/to-dos-api-dotnet/e2e which doesn't exist in the Host OS
+      # from a simple OS terminal of the repo root where LOCAL_WORKSPACE_FOLDER is not defined . leads to the expected existing absolute OS local path of the folder
+      # interpolation syntax explanation lives here https://docs.docker.com/reference/compose-file/interpolation/
+      # we need only e2e folder to run its Karate tests
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e:/e2e-copy
+    networks:
+      - to-dos-api-dotnet-network
+
+networks:
+  to-dos-api-dotnet-network:

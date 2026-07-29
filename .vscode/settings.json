@@ -27,5 +27,8 @@
     "ms-azuretools.vscode-containers": [
       "workspace"
     ],
+    "github.vscode-github-actions": [
+      "workspace"
+    ],
   },
 }

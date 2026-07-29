@@ -15,7 +15,17 @@
         // Adds kind of Docker Desktop VSCode submenu which is more efficient than calling docker commands from CLI
         // It is going to work the best in GitHub Codespaces scenario since there is no Docker Desktop
         "ms-azuretools.vscode-containers",
+        // Adds GitHub Actions workflows support and integration with the Actions statuses if you login to GitHub
+        "github.vscode-github-actions",
       ]
     }
+  },
+  // the most important thing regarding containerEnv env variables is that they are static and accessible in the Terminal
+  // you can check more about Environment variables here https://code.visualstudio.com/remote/advancedcontainers/environment-variables#_option-1-add-individual-variables
+  "containerEnv": {
+    // the full list of available variables is available here https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson
+    // localWorkspaceFolder contains Host OS absolute path of the repo
+    // LOCAL_WORKSPACE_FOLDER is in use in docker-compose.yml, check its comments
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
   },
 }
