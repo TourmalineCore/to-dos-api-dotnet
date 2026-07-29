@@ -13,4 +13,19 @@
   "editor.matchBrackets": "never",
   "workbench.statusBar.visible": false,
   // --- Presentation Style Settings ---
+  // It looks nice to install extensions inside of our Dev Container instead of your global
+  // Thus, by default we try to use workspace kind if it is supported and ui for the other extensions
+  // Read more about extension kind:
+  // - https://code.visualstudio.com/docs/devcontainers/containers#_advanced-forcing-an-extension-to-run-locally-or-remotely
+  // - https://code.visualstudio.com/api/advanced-topics/extension-host#preferred-extension-location
+  "remote.extensionKind": {
+    // Since it is a Web Extension (https://code.visualstudio.com/api/extension-guides/web-extensions) ui kind is going to work in GitHub Codespaces as well
+    "k--kato.intellij-idea-keybindings": [
+      "ui"
+    ],
+    // We can install it to our Dev Container
+    "ms-azuretools.vscode-containers": [
+      "workspace"
+    ],
+  },
 }

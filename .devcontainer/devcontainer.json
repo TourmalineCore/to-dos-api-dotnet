@@ -3,4 +3,19 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  // List of available features lives here https://containers.dev/features
+  "features": {
+    // This feature enables us to call Host OS Docker (Docker out of Docker)
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      // Install extensions to your Dev Container keeping global VSCode extensions not polluted
+      "extensions": [
+        // Adds kind of Docker Desktop VSCode submenu which is more efficient than calling docker commands from CLI
+        // It is going to work the best in GitHub Codespaces scenario since there is no Docker Desktop
+        "ms-azuretools.vscode-containers",
+      ]
+    }
+  },
 }
