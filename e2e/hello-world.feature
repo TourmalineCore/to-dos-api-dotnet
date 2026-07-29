@@ -5,4 +5,4 @@ Feature: Hello World
   Scenario: Happy Path
     Given url 'https://google.com'
     And method GET
-    Then status 404
+    Then status 200
