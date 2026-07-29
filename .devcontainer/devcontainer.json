@@ -15,7 +15,11 @@
         // Adds kind of Docker Desktop VSCode submenu which is more efficient than calling docker commands from CLI
         // It is going to work the best in GitHub Codespaces scenario since there is no Docker Desktop
         "ms-azuretools.vscode-containers",
+        "github.vscode-github-actions",
       ]
     }
+  },
+  "containerEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
   },
 }
