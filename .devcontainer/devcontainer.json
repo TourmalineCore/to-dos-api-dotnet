@@ -17,6 +17,7 @@
         "ms-azuretools.vscode-containers",
         // Adds GitHub Actions workflows support and integration with the Actions statuses if you login to GitHub
         "github.vscode-github-actions",
+        "ms-dotnettools.csdevkit",
       ]
     }
   },
@@ -27,5 +28,6 @@
     // localWorkspaceFolder contains Host OS absolute path of the repo
     // LOCAL_WORKSPACE_FOLDER is in use in docker-compose.yml, check its comments
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "true",
   },
 }

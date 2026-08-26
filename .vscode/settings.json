@@ -30,5 +30,8 @@
     "github.vscode-github-actions": [
       "workspace"
     ],
+    "ms-dotnettools.csdevkit": [
+      "workspace"
+    ],
   },
 }

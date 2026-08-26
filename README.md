@@ -17,6 +17,12 @@ Open this repo's folder in VSCode/Codespaces, it might immediately propose you t
 
 When your Dev Container is ready, the VSCode window will be re-opened. Open a new terminal in this Dev Container which will be executing the commands under this prepared Linux container where we already have all pre-installed and pre-configured development related dependencies.
 
+### Run API
+
+```cli
+dotnet run --project ./Api --verbosity detailed
+```
+
 ### Run E2E Tests
 
 To run Karate E2E tests execute the following script in Terminal:
