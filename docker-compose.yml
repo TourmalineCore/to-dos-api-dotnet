@@ -1,4 +1,15 @@
 services:
+
+  to-dos-api-dotnet-api:
+    container_name: to-dos-api-dotnet-api
+    build:
+      dockerfile: ./Api/Dockerfile
+      context: .
+    ports:
+      - 6401:80
+    networks:
+      - to-dos-api-dotnet-network
+
   to-dos-api-dotnet-e2e-tests:
     # if you specify container_name it provides a pretty name of the container in Docker Desktop
     # visually it shows e2e-tests sub-container name inside of to-dos-api-dotnet parent container
@@ -6,6 +17,12 @@ services:
     build:
       context: ./e2e
       dockerfile: ./Dockerfile
+    # service_started is not what we need, we need deps to be healthy and ready, this needs to be implemented properly 
+    depends_on:
+      to-dos-api-dotnet-api:
+        condition: service_started
+    # restart twice in case of not ready deps or network failures
+    restart: on-failure:2
     # we pass the tests folder path as an argument to the docker container's entrypoint
     command: run ./e2e-copy
     volumes:
@@ -15,6 +32,8 @@ services:
       # interpolation syntax explanation lives here https://docs.docker.com/reference/compose-file/interpolation/
       # we need only e2e folder to run its Karate tests
       - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e:/e2e-copy
+    environment:
+      API_ROOT_URL: "http://to-dos-api-dotnet-api"
     networks:
       - to-dos-api-dotnet-network
 
