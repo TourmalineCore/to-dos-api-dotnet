@@ -24,6 +24,5 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
         runCmd: |
-          # https://stackoverflow.com/a/76220531
-          retry -d 5 -t 60 java -jar /karate.jar .
+          java -jar /karate.jar .
         push: never

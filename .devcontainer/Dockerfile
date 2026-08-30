@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/devcontainers/dotnet:10.0-noble
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
   apt-get -y install --no-install-recommends \ 
-  default-jre-headless retry && \
+  default-jre-headless && \
   apt-get autoremove -y && \
   apt-get clean -y && \
   rm -rf /var/lib/apt/lists/*
