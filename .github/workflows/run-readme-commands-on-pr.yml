@@ -25,5 +25,6 @@ jobs:
       with:
         runCmd: |
           # https://stackoverflow.com/a/76220531
-          retry -d 5 -t 24 java -jar /karate.jar .
+          retry -d 5 -t 24 \
+            java -jar /karate.jar .
         push: never
