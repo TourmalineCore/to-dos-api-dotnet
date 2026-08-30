@@ -29,5 +29,6 @@
     // LOCAL_WORKSPACE_FOLDER is in use in docker-compose.yml, check its comments
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "DOTNET_CLI_TELEMETRY_OPTOUT": "true",
+    "API_ROOT_URL": "http://localhost:4401",
   },
 }
