@@ -31,10 +31,4 @@
     "DOTNET_CLI_TELEMETRY_OPTOUT": "true",
     "API_ROOT_URL": "http://localhost:4401",
   },
-  "portsAttributes": {
-    "4401": {
-      "label": "VSCode Dev Container API Running Port",
-      "requireLocalPort": true,
-    },
-  }
 }
