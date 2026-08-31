@@ -2,6 +2,7 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
   "files.eol": "\n",
   // --- Presentation Style Settings ---
   "editor.fontFamily": "Source Code Pro",
@@ -33,5 +34,15 @@
     "ms-dotnettools.csdevkit": [
       "workspace"
     ],
+    "csharpier.csharpier-vscode": [
+      "workspace"
+    ],
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.formatOnSaveMode": "file",
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
 }

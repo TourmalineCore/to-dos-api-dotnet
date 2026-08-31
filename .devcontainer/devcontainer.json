@@ -18,6 +18,7 @@
         // Adds GitHub Actions workflows support and integration with the Actions statuses if you login to GitHub
         "github.vscode-github-actions",
         "ms-dotnettools.csdevkit",
+        "csharpier.csharpier-vscode",
       ]
     }
   },
