@@ -26,7 +26,6 @@ jobs:
 
     - name: Run CSharpier Check
       uses: devcontainers/ci@v0.3
-      continue-on-error: true
       with:
         runCmd: |
           dotnet tool restore
@@ -41,7 +40,6 @@ jobs:
 
     - name: Run Build Warnings Check
       uses: devcontainers/ci@v0.3
-      continue-on-error: true
       with:
         runCmd: |
           dotnet clean
