@@ -9,6 +9,13 @@ indent_style = space
 
 max_line_length = 120
 
+# this should be causing namespace missmatch to fail the linting workflow and it does
+# however, auto fix of formatting accoring to this rule is broken since 2022 :(
+# thus, it is validated but needs manual fix as for now
+# https://github.com/dotnet/format/issues/1623
+dotnet_style_namespace_match_folder = true:warning
+dotnet_diagnostic.IDE0130.severity = warning
+
 #### Core EditorConfig Options ####
 
 # Indentation and spacing
@@ -22,7 +29,7 @@ insert_final_newline = true
 [*.{cs,vb}]
 
 # Organize usings
-dotnet_separate_import_directive_groups = true
+dotnet_separate_import_directive_groups = false
 dotnet_sort_system_directives_first = true
 file_header_template = unset
 
@@ -113,7 +120,7 @@ csharp_style_prefer_readonly_struct_member = true:suggestion
 # Code-block preferences
 csharp_prefer_braces = true:silent
 csharp_prefer_simple_using_statement = true:suggestion
-csharp_style_namespace_declarations = file_scoped:suggestion
+csharp_style_namespace_declarations = file_scoped:error
 csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_style_prefer_top_level_statements = true:silent
