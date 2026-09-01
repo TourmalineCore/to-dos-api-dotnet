@@ -1,0 +1,25 @@
+name: Run Lint on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-lint:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run EditorConfig Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet format style --verify-no-changes
+        push: never
+
+    - name: Run CSharpier Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet csharpier check .
+        push: never
