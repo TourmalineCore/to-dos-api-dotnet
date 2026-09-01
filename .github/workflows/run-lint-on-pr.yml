@@ -5,20 +5,24 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  run-lint:
+  run-editorconfig-lint:
     runs-on: ubuntu-24.04
-    continue-on-error: true
 
     steps:
     - uses: actions/checkout@v7
 
     - name: Run EditorConfig Check
       uses: devcontainers/ci@v0.3
-      continue-on-error: true
       with:
         runCmd: |
           dotnet format style --verify-no-changes
         push: never
+
+  run-csharpier-lint:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v7
 
     - name: Run CSharpier Check
       uses: devcontainers/ci@v0.3
@@ -29,6 +33,11 @@ jobs:
 
           dotnet csharpier check .
         push: never
+
+  run-build-warnings-lint:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
 
     - name: Run Build Warnings Check
       uses: devcontainers/ci@v0.3
