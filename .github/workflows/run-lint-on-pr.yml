@@ -1,0 +1,44 @@
+name: Run Lint on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-editorconfig-lint:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run EditorConfig Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet format style --verify-no-changes
+        push: never
+
+  run-csharpier-lint:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run CSharpier Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet csharpier check .
+        push: never
+
+  run-build-warnings-lint:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run Build Warnings Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet clean
+
+          dotnet build --property:TreatWarningsAsErrors=true
+        push: never

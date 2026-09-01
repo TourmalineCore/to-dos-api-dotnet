@@ -3,6 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "onCreateCommand": "dotnet tool restore",
   // List of available features lives here https://containers.dev/features
   "features": {
     // This feature enables us to call Host OS Docker (Docker out of Docker)
@@ -18,6 +19,7 @@
         // Adds GitHub Actions workflows support and integration with the Actions statuses if you login to GitHub
         "github.vscode-github-actions",
         "ms-dotnettools.csdevkit",
+        "csharpier.csharpier-vscode",
       ]
     }
   },

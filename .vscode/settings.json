@@ -33,5 +33,15 @@
     "ms-dotnettools.csdevkit": [
       "workspace"
     ],
+    "csharpier.csharpier-vscode": [
+      "workspace"
+    ],
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.formatOnSaveMode": "file",
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
 }
