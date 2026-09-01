@@ -2,7 +2,6 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "modifications",
   "files.eol": "\n",
   // --- Presentation Style Settings ---
   "editor.fontFamily": "Source Code Pro",
