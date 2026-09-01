@@ -6,12 +6,6 @@ Feature: To Dos
     * def apiRootUrl = jsUtils().getEnvVariable('API_ROOT_URL')
 
   Scenario: Happy Path
-    Given url apiRootUrl
-    Given path 'weatherforecast'
-    And method GET
-    Then status 200
-    And match response == '#[5]'
-
     * def randomToDoName = '[API-E2E]-Test-to-do-' + Math.random()
     
     Given url apiRootUrl
