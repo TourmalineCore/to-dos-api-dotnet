@@ -25,3 +25,12 @@ jobs:
 
           dotnet csharpier check .
         push: never
+
+    - name: Run CSharpier Check
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet clean
+          
+          dotnet build --property:TreatWarningsAsErrors=true
+        push: never
