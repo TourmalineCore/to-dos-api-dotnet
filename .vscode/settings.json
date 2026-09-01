@@ -6,12 +6,11 @@
   // --- Presentation Style Settings ---
   "editor.fontFamily": "Source Code Pro",
   "workbench.colorTheme": "Default High Contrast",
-  "editor.fontSize": 14,
-  "window.zoomLevel": 3,
+  "editor.fontSize": 26,
   "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.minimap.enabled": false,
   "editor.matchBrackets": "never",
-  "workbench.statusBar.visible": false,
+  // "workbench.statusBar.visible": false,
   // --- Presentation Style Settings ---
   // It looks nice to install extensions inside of our Dev Container instead of your global
   // Thus, by default we try to use workspace kind if it is supported and ui for the other extensions
@@ -44,4 +43,5 @@
   "[xml]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
+  "dotnet.codeLens.enableReferencesCodeLens": false,
 }
