@@ -13,5 +13,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-var t = 5;
