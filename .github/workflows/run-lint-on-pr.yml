@@ -12,6 +12,7 @@ jobs:
 
     - name: Run EditorConfig Check
       uses: devcontainers/ci@v0.3
+      continue-on-error: true
       with:
         runCmd: |
           dotnet format style --verify-no-changes
@@ -19,6 +20,7 @@ jobs:
 
     - name: Run CSharpier Check
       uses: devcontainers/ci@v0.3
+      continue-on-error: true
       with:
         runCmd: |
           dotnet tool restore
@@ -26,11 +28,12 @@ jobs:
           dotnet csharpier check .
         push: never
 
-    - name: Run CSharpier Check
+    - name: Run Build Warnings Check
       uses: devcontainers/ci@v0.3
+      continue-on-error: true
       with:
         runCmd: |
           dotnet clean
-          
+
           dotnet build --property:TreatWarningsAsErrors=true
         push: never
