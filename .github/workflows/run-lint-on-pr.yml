@@ -28,8 +28,6 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
         runCmd: |
-          dotnet tool restore
-
           dotnet csharpier check .
         push: never
 

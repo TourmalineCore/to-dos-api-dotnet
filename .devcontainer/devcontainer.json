@@ -3,6 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "onCreateCommand": "dotnet tool restore",
   // List of available features lives here https://containers.dev/features
   "features": {
     // This feature enables us to call Host OS Docker (Docker out of Docker)
