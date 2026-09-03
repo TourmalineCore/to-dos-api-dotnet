@@ -1,3 +1,4 @@
+using Application.Features.ToDos.Handlers.CreateToDo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api;
@@ -19,5 +20,8 @@ public static class DependencyInjection
     {
       options.UseNpgsql(connectionString);
     });
+
+    services.AddTransient<CreateToDoHandler>();
+    services.AddTransient<CreateToDoCommand>();
   }
 }
