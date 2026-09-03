@@ -6,10 +6,16 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal;
 
 public class AppDbContext : DbContext
 {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
   public AppDbContext(DbContextOptions<AppDbContext> options)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     : base(options) { }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
   public AppDbContext() { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
+  public virtual DbSet<ToDo> ToDos { get; set; }
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
