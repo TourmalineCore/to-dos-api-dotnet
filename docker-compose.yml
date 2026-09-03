@@ -15,7 +15,7 @@ services:
 
   # https://event-driven.io/en/automatically_connect_pgadmin_to_database/
   to-dos-api-dotnet-pgadmin:
-    image: dpage/pgadmin4:8.4
+    image: dpage/pgadmin4:9.17
     container_name: to-dos-api-dotnet-pgadmin
     depends_on:
       to-dos-api-dotnet-db:
