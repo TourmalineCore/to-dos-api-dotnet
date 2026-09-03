@@ -1,8 +1,18 @@
 {
   "name": "Dev Container of to-dos-api-dotnet",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.yml",
+  ],
+  // our terminal will need .NET SDK and Karate that are part of this docker compose service
+  "service": "to-dos-api-dotnet-devcontainer",
+  // https://github.com/microsoft/vscode-remote-release/issues/5795#issuecomment-2518255296
+  // it is not possible to pass a profile name MockForDevelopment thus we need to hadrcode here services that need to be run as part of Dev Container
+  "runServices": [
+    "to-dos-api-dotnet-db",
+    "to-dos-api-dotnet-pgadmin",
+  ],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "onCreateCommand": "dotnet tool restore",
   // List of available features lives here https://containers.dev/features
   "features": {
@@ -32,5 +42,24 @@
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "DOTNET_CLI_TELEMETRY_OPTOUT": "true",
     "API_ROOT_URL": "http://localhost:4401",
+  }, // need to open the API, DB, and MockServer ports to be able to open them using Host OS localhost
+  "forwardPorts": [
+    4401,
+    7401,
+    9401,
+  ],
+  "portsAttributes": {
+    "4401": {
+      "label": "VSCode Dev Container API Running Port",
+      "requireLocalPort": true,
+    },
+    "7401": {
+      "label": "VSCode Dev Container DB Running Port",
+      "requireLocalPort": true,
+    },
+    "9401": {
+      "label": "VSCode Dev Container PgAdmin Running Port",
+      "requireLocalPort": true,
+    },
   },
 }
