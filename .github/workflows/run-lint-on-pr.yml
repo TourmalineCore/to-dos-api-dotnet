@@ -38,7 +38,5 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
         runCmd: |
-          dotnet clean
-
-          dotnet build --property:TreatWarningsAsErrors=true
+          dotnet clean && dotnet build --property:TreatWarningsAsErrors=true
         push: never
