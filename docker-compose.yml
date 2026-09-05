@@ -8,6 +8,8 @@ services:
     build:
       dockerfile: ./Api/Dockerfile
       context: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 6401:80
     networks:
