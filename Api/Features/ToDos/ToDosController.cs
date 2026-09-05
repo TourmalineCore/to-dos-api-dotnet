@@ -1,5 +1,7 @@
-using System.Collections.Concurrent;
 using System.ComponentModel.DataAnnotations;
+using Application.Features.ToDos.Handlers.CreateToDo;
+using Application.Features.ToDos.Handlers.DeleteToDo;
+using Application.Features.ToDos.Handlers.GetToDos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Features.ToDos;
@@ -8,47 +10,29 @@ namespace Api.Features.ToDos;
 [Route("to-dos")]
 public class ToDosController : ControllerBase
 {
-  private static long _nextToDoId = 0;
-  private static readonly ConcurrentDictionary<long, ToDo> ToDos = new();
-
   [HttpPost]
   public Task<CreateToDoResponse> CreateToDoAsync(
-    [Required] [FromBody] CreateToDoRequest createToDoRequest
+    [Required] [FromBody] CreateToDoRequest createToDoRequest,
+    [FromServices] CreateToDoHandler createToDoHandler
   )
   {
-    var newToDo = new ToDo
-    {
-      Id = Interlocked.Increment(ref _nextToDoId),
-      Name = createToDoRequest.Name,
-    };
-
-    ToDos[newToDo.Id] = newToDo;
-
-    return Task.FromResult(
-      new CreateToDoResponse() { NewToDoId = newToDo.Id }
-    );
+    return createToDoHandler.HandleAsync(createToDoRequest);
   }
 
   [HttpGet]
-  public Task<GetToDosResponse> GetToDosAsync()
+  public Task<GetToDosResponse> GetToDosAsync(
+    [FromServices] GetToDosHandler getToDosHandler
+  )
   {
-    return Task.FromResult(
-      new GetToDosResponse
-      {
-        ToDos = ToDos
-          .Values.Select(x => new ToDoDto { Id = x.Id, Name = x.Name })
-          .ToList(),
-      }
-    );
+    return getToDosHandler.HandleAsync();
   }
 
   [HttpDelete]
   public Task<DeleteToDoResponse> DeleteToDoAsync(
-    [Required] [FromQuery] long toDoId
+    [Required] [FromQuery] long toDoId,
+    [FromServices] DeleteToDoHandler deleteToDoHandler
   )
   {
-    return Task.FromResult(
-      new DeleteToDoResponse { IsDeleted = ToDos.Remove(toDoId, out _) }
-    );
+    return deleteToDoHandler.HandleAsync(toDoId);
   }
 }
