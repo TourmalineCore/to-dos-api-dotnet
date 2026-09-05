@@ -19,6 +19,9 @@ max_line_length = 75
 dotnet_style_namespace_match_folder = true:warning
 dotnet_diagnostic.IDE0130.severity = warning
 
+# to fail on unnecessary using at lint
+dotnet_diagnostic.IDE0005.severity = warning
+
 #### Core EditorConfig Options ####
 
 # Indentation and spacing
