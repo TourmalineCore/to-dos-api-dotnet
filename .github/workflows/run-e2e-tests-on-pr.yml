@@ -10,11 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
-    # - name: Run API using Docker Compose
-    #   run: |
-    #     docker compose up --build to-dos-api-dotnet-api \
-    #         > /dev/null 2>&1 &
-
     - name: Run E2E tests using Docker Compose
       run: |
         docker compose -f ./docker-compose.yml -f ./e2e/docker-compose.yml up to-dos-api-dotnet-e2e-tests --build --exit-code-from to-dos-api-dotnet-e2e-tests
