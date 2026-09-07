@@ -5,7 +5,7 @@ services:
     # visually it shows e2e-tests sub-container name inside of to-dos-api-dotnet parent container
     container_name: 'to-dos-api-dotnet-e2e-tests'
     build:
-      context: .
+      context: ./e2e
       dockerfile: ./Dockerfile
     # restart twice in case of not ready deps or network failures
     # restart: on-failure:2
