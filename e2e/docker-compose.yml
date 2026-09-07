@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     # restart twice in case of not ready deps or network failures
-    restart: on-failure:2
+    # restart: on-failure:2
     # we pass the tests folder path as an argument to the docker container's entrypoint
     command: run ./e2e-copy
     volumes:
