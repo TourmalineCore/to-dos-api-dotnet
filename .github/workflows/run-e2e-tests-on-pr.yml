@@ -17,6 +17,6 @@ jobs:
 
     - name: Run E2E tests using Docker Compose
       run: |
-        docker compose -f ./docker-compose.yml -f ./e2e/docker-compose.yml up to-dos-api-dotnet-e2e-tests --build --exit-code-from to-dos-api-dotnet-e2e-tests
+        docker compose -f ./docker-compose.yml -f ./e2e/docker-compose.yml up to-dos-api-dotnet-e2e-tests --build
       env:
         "E2E_TESTS_API_ROOT_URL": "http://localhost:6401"
