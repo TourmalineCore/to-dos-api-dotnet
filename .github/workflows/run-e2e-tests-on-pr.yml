@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v7
+
     - name: Run E2E tests using Docker Compose
       run: |
-        docker compose up --build --exit-code-from to-dos-api-dotnet-e2e-tests
+        docker compose -f ./e2e/docker-compose.yml up --build to-dos-api-dotnet-e2e-tests
