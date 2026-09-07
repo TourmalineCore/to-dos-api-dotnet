@@ -11,7 +11,7 @@ services:
       to-dos-api-dotnet-api:
         condition: service_started
     # restart twice in case of not ready deps or network failures
-    # restart: on-failure:2
+    restart: on-failure:2
     # we pass the tests folder path as an argument to the docker container's entrypoint
     command: run ./e2e-copy
     volumes:
@@ -22,5 +22,5 @@ services:
       # we need only e2e folder to run its Karate tests
       - ${LOCAL_WORKSPACE_FOLDER:-.}:/e2e-copy
     environment:
-      API_ROOT_URL: "${API_ROOT_URL}"
+      API_ROOT_URL: "${E2E_TESTS_API_ROOT_URL}"
     network_mode: "host"

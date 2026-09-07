@@ -9,7 +9,7 @@ services:
       dockerfile: ./Api/Dockerfile
       context: .
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=DockerCompose
     ports:
       - 6401:80
     networks:
