@@ -7,6 +7,9 @@ services:
     build:
       context: ./e2e
       dockerfile: ./Dockerfile
+    depends_on:
+      to-dos-api-dotnet-api:
+        condition: service_started
     # restart twice in case of not ready deps or network failures
     # restart: on-failure:2
     # we pass the tests folder path as an argument to the docker container's entrypoint
