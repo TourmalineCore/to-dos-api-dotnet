@@ -4,7 +4,7 @@
       "Group": "Servers",
       "Name": "to-dos-api-dotnet-db (Windows, macOS)",
       "Host": "host.docker.internal",
-      "Port": 7501,
+      "Port": 7401,
       "MaintenanceDB": "to-dos-api-dotnet-db",
       "Username": "postgres",
       "SSLMode": "prefer"
@@ -13,7 +13,7 @@
       "Group": "Servers",
       "Name": "to-dos-api-dotnet-db (Ubuntu, Codespaces)",
       "Host": "172.17.0.1",
-      "Port": 7501,
+      "Port": 7401,
       "MaintenanceDB": "to-dos-api-dotnet-db",
       "Username": "postgres",
       "SSLMode": "prefer"

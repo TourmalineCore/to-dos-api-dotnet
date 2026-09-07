@@ -42,7 +42,10 @@
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "DOTNET_CLI_TELEMETRY_OPTOUT": "true",
     "API_ROOT_URL": "http://localhost:4401",
-  }, // need to open the API, DB, and MockServer ports to be able to open them using Host OS localhost
+    // let's set our default envrironment here to not do it manually every time
+    "ASPNETCORE_ENVIRONMENT": "Development",
+  },
+  // need to open the API, DB, and MockServer ports to be able to open them using Host OS localhost
   "forwardPorts": [
     4401,
     7401,

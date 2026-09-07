@@ -1,4 +1,4 @@
-namespace Api.Features.ToDos;
+namespace Application.Features.ToDos.Handlers.DeleteToDo;
 
 public class DeleteToDoResponse
 {

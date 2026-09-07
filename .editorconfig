@@ -4,6 +4,9 @@ root = true
 [*]
 indent_style = space
 
+[**/Migrations/*.cs]
+dotnet_diagnostic.IDE0161.severity = none
+
 # C# files
 [*.cs]
 
@@ -15,6 +18,9 @@ max_line_length = 75
 # https://github.com/dotnet/format/issues/1623
 dotnet_style_namespace_match_folder = true:warning
 dotnet_diagnostic.IDE0130.severity = warning
+
+# to fail on unnecessary using at lint
+dotnet_diagnostic.IDE0005.severity = warning
 
 #### Core EditorConfig Options ####
 
