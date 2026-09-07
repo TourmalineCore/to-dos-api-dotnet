@@ -6,7 +6,7 @@ FROM ubuntu:24.04
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
   apt-get -y install --no-install-recommends \ 
-  curl default-jre-headless && \
+  curl default-jre-headless retry && \
   apt-get autoremove -y && \
   apt-get clean -y && \
   rm -rf /var/lib/apt/lists/*
@@ -20,4 +20,4 @@ RUN curl -o /karate.jar -L 'https://github.com/karatelabs/karate/releases/downlo
 # later we pass *.feature files folder path from outside as an argument in docker run command
 # then it will be forwarded here
 # comprehensive article about RUN, CMD, and ENTRYPOINT here https://www.docker.com/blog/docker-best-practices-choosing-between-run-cmd-and-entrypoint/
-ENTRYPOINT ["java", "-jar", "karate.jar"]
+ENTRYPOINT ["retry", "-d", "5", "-t", "3", "java", "-jar", "karate.jar"]
