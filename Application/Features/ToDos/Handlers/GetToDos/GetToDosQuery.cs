@@ -7,6 +7,9 @@ public class GetToDosQuery(AppDbContext context)
 {
   public Task<List<ToDo>> GetAsync()
   {
-    return context.QueryableAsNoTracking<ToDo>().ToListAsync();
+    return context
+      .QueryableAsNoTracking<ToDo>()
+      .OrderByDescending(x => x.Id)
+      .ToListAsync();
   }
 }
