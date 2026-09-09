@@ -1,3 +1,5 @@
+using Core.Entities;
+
 namespace Application.Features.ToDos.Handlers.GetToDos;
 
 public class GetToDosHandler(GetToDosQuery getToDosQuery)
@@ -9,7 +11,12 @@ public class GetToDosHandler(GetToDosQuery getToDosQuery)
     return new GetToDosResponse
     {
       ToDos = toDos
-        .Select(x => new ToDoDto { Id = x.Id, Name = x.Name })
+        .Select(x => new ToDoDto
+        {
+          Id = x.Id,
+          Name = x.Name,
+          Status = ToDoStatus.New,
+        })
         .ToList(),
     };
   }

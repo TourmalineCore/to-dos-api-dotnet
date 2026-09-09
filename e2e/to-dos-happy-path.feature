@@ -29,6 +29,7 @@ Feature: To Dos
     {
       "id": "#(newToDoId)",
       "name": "#(randomToDoName)",
+      "status": "New",
     }
     """
 
