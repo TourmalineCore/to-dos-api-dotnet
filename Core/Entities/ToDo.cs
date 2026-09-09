@@ -18,6 +18,13 @@ public class ToDo
     {
       return ToDoStatus.New;
     }
+    else if (
+      CreatedAtUtc > utcNow.AddDays(-28)
+      && CreatedAtUtc <= utcNow.AddDays(-7)
+    )
+    {
+      return ToDoStatus.Old;
+    }
 
     throw new ArgumentOutOfRangeException(
       $"Not expected path of ${nameof(GetStatus)}"
