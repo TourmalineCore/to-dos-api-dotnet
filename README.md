@@ -29,3 +29,10 @@ To run Karate E2E tests execute the following script in Terminal:
 ```cli
 java -jar /karate.jar .
 ```
+
+### Run Modular Tests
+
+To run xUnit unit and integrational tests execute the following script in Terminal:
+```cli
+dotnet test --verbosity detailed
+```
