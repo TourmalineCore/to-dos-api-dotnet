@@ -14,5 +14,5 @@ jobs:
       uses: devcontainers/ci@v0.3
       with:
         runCmd: |
-          dotnet test --verbosity detailed
+          dotnet test
         push: never
