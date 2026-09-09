@@ -1,0 +1,18 @@
+name: Run Modular Tests on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-modular-tests:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run Modular Tests
+      uses: devcontainers/ci@v0.3
+      with:
+        runCmd: |
+          dotnet test --verbosity detailed
+        push: never
