@@ -10,7 +10,7 @@ public class ToDoTests
   {
     var dt = new DateTime(2026, 01, 02, 03, 04, 05, 678, DateTimeKind.Utc);
 
-    var toDo = new ToDo { Name = "First", CreatedAtUtc = dt };
+    var toDo = new ToDo { Name = "To Do", CreatedAtUtc = dt };
 
     var dateTimeProviderMock = new Mock<IDateTimeProvider>();
 
@@ -19,5 +19,21 @@ public class ToDoTests
     var status = toDo.GetStatus(dateTimeProviderMock.Object);
 
     Assert.Equal(ToDoStatus.New, status);
+  }
+
+  [Fact]
+  public async Task GetStatus_EightDaysAgoIsOld()
+  {
+    var dt = new DateTime(2026, 01, 02, 03, 04, 05, 678, DateTimeKind.Utc);
+
+    var toDo = new ToDo { Name = "To Do", CreatedAtUtc = dt };
+
+    var dateTimeProviderMock = new Mock<IDateTimeProvider>();
+
+    dateTimeProviderMock.Setup(x => x.UtcNow).Returns(dt.AddDays(8));
+
+    var status = toDo.GetStatus(dateTimeProviderMock.Object);
+
+    Assert.Equal(ToDoStatus.Old, status);
   }
 }
