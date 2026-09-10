@@ -8,7 +8,7 @@ public class ToDo
 
   public required string Name { get; set; }
 
-  public DateTime CreatedAtUtc { get; set; }
+  public required DateTime CreatedAtUtc { get; set; }
 
   public ToDoStatus GetStatus(IDateTimeProvider dateTimeProvider)
   {
