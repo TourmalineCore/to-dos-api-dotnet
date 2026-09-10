@@ -12,26 +12,17 @@ public class ToDo
 
   public ToDoStatus GetStatus(IDateTimeProvider dateTimeProvider)
   {
-    var utcNow = dateTimeProvider.UtcNow;
+    const int newForDays = 7;
+    const int forgottenAfterDays = 28;
 
-    if (CreatedAtUtc > utcNow.AddDays(-7) && CreatedAtUtc < utcNow)
-    {
+    var ageInDays = (dateTimeProvider.UtcNow - CreatedAtUtc).TotalDays;
+
+    if (ageInDays < newForDays)
       return ToDoStatus.New;
-    }
-    else if (
-      CreatedAtUtc > utcNow.AddDays(-28)
-      && CreatedAtUtc <= utcNow.AddDays(-7)
-    )
-    {
-      return ToDoStatus.Old;
-    }
-    else if (CreatedAtUtc <= utcNow.AddDays(-28))
-    {
-      return ToDoStatus.Forgotten;
-    }
 
-    throw new ArgumentOutOfRangeException(
-      $"Not expected path of ${nameof(GetStatus)}"
-    );
+    if (ageInDays < forgottenAfterDays)
+      return ToDoStatus.Old;
+
+    return ToDoStatus.Forgotten;
   }
 }
