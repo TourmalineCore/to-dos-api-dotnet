@@ -36,7 +36,11 @@ static async Task MigrateDatabaseAsync(IServiceProvider serviceProvider)
 {
   using var serviceScope = serviceProvider.CreateScope();
 
-  await serviceScope
-    .ServiceProvider.GetRequiredService<AppDbContext>()
-    .Database.MigrateAsync();
+  using var context =
+    serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+  if (!context.Database.IsInMemory())
+  {
+    await context.Database.MigrateAsync();
+  }
 }

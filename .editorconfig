@@ -5,7 +5,8 @@ root = true
 indent_style = space
 
 [**/Migrations/*.cs]
-dotnet_diagnostic.IDE0161.severity = none
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-options#exclude-generated-code
+generated_code = true
 
 # C# files
 [*.cs]
