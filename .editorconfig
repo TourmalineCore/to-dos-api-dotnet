@@ -5,7 +5,8 @@ root = true
 indent_style = space
 
 [**/Migrations/*.cs]
-dotnet_diagnostic.IDE0161.severity = none
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-options#exclude-generated-code
+generated_code = true
 
 # C# files
 [*.cs]
@@ -197,6 +198,10 @@ csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = true
 
 #### Naming styles ####
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = warning
+
 [*.{cs,vb}]
 
 # Naming rules
