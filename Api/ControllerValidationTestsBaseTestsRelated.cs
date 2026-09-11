@@ -10,7 +10,7 @@ public class ControllerValidationTestsBase(
   WebApplicationFactory<Program> factory
 ) : IClassFixture<WebApplicationFactory<Program>>, IAsyncLifetime
 {
-  protected HttpClient HttpClient = null!;
+  protected HttpClient _httpClient = null!;
 
   public async Task InitializeAsync()
   {
@@ -19,12 +19,12 @@ public class ControllerValidationTestsBase(
       builder.ConfigureTestServices(services =>
       {
         // https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0&pivots=xunit#customize-webapplicationfactory
-        var dbContextDescriptor = services.SingleOrDefault(d =>
-          d.ServiceType
-          == typeof(IDbContextOptionsConfiguration<AppDbContext>)
-        )!;
-
-        services.Remove(dbContextDescriptor);
+        services.Remove(
+          services.Single(x =>
+            x.ServiceType
+            == typeof(IDbContextOptionsConfiguration<AppDbContext>)
+          )
+        );
 
         services.AddDbContext<AppDbContext>(options =>
           options.UseInMemoryDatabase(
@@ -35,12 +35,12 @@ public class ControllerValidationTestsBase(
       });
     });
 
-    HttpClient = factory.CreateClient();
+    _httpClient = factory.CreateClient();
   }
 
   public async Task DisposeAsync()
   {
-    HttpClient.Dispose();
+    _httpClient.Dispose();
     await factory.DisposeAsync();
   }
 }

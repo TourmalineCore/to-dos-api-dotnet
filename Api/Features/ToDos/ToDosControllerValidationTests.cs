@@ -4,8 +4,9 @@ using Xunit;
 
 namespace Api.Features.ToDos;
 
-public class ToDosControllerTests(WebApplicationFactory<Program> factory)
-  : ControllerValidationTestsBase(factory)
+public class ToDosControllerValidationTests(
+  WebApplicationFactory<Program> factory
+) : ControllerValidationTestsBase(factory)
 {
   [Theory]
   [MemberData(nameof(CreateToDoReuqestInvalidNamesTestCases))]
@@ -15,7 +16,7 @@ public class ToDosControllerTests(WebApplicationFactory<Program> factory)
   {
     var createToDoRequest = new CreateToDoRequest { Name = name };
 
-    var response = await HttpClient.PostAsJsonAsync(
+    var response = await _httpClient.PostAsJsonAsync(
       "/to-dos",
       createToDoRequest
     );
