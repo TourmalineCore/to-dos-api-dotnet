@@ -14,11 +14,12 @@ public class ControllerValidationTestsBase(
 
   public async Task InitializeAsync()
   {
+    _httpClient = factory.CreateClient();
+
     factory = factory.WithWebHostBuilder(builder =>
     {
       builder.ConfigureTestServices(services =>
       {
-        // https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0&pivots=xunit#customize-webapplicationfactory
         services.Remove(
           services.Single(x =>
             x.ServiceType
@@ -34,8 +35,6 @@ public class ControllerValidationTestsBase(
         );
       });
     });
-
-    _httpClient = factory.CreateClient();
   }
 
   public async Task DisposeAsync()
