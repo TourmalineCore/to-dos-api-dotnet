@@ -33,13 +33,13 @@ Feature: To Dos
     }
     """
 
+    Given url apiRootUrl
     Given path 'to-dos'
     And params { toDoId: "#(newToDoId)" }
     When method DELETE
-    Then status 200
-    And match response ==
-    """
-    {
-      "isDeleted": true,
-    }
-    """
+    Then match response == { isDeleted: true }
+
+    Given url apiRootUrl
+    Given path 'to-dos'
+    When method GET
+    Then assert response.toDos.filter(x => x.id == newToDoId).length == 0
