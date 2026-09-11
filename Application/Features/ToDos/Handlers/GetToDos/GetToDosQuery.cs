@@ -9,7 +9,7 @@ public class GetToDosQuery(AppDbContext context)
   {
     return context
       .QueryableAsNoTracking<ToDo>()
-      .OrderByDescending(x => x.Id)
+      .OrderByDescending(x => x.CreatedAtUtc)
       .ToListAsync();
   }
 }

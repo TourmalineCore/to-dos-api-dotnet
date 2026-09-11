@@ -1,6 +1,8 @@
+using Application;
 using Application.Features.ToDos.Handlers.CreateToDo;
 using Application.Features.ToDos.Handlers.DeleteToDo;
 using Application.Features.ToDos.Handlers.GetToDos;
+using Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api;
@@ -31,5 +33,7 @@ public static class DependencyInjection
 
     services.AddTransient<DeleteToDoHandler>();
     services.AddTransient<DeleteToDoCommand>();
+
+    services.AddTransient<IDateTimeProvider, DateTimeProvider>();
   }
 }

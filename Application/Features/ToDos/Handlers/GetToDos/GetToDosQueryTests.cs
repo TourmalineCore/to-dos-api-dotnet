@@ -10,13 +10,27 @@ public class GetToDosQueryTests : IntegrationTestBase
   {
     var context = CreateAppDbContext();
 
-    var firstToDo = new ToDo { Name = "First" };
+    var dt = new DateTime(2026, 01, 02, 03, 04, 05, 678, DateTimeKind.Utc);
+
+    var firstToDo = new ToDo
+    {
+      Name = "First",
+      CreatedAtUtc = dt.AddHours(1),
+    };
     await AddEntityAndSaveAsync(context, firstToDo);
 
-    var secondToDo = new ToDo { Name = "Second" };
+    var secondToDo = new ToDo
+    {
+      Name = "Second",
+      CreatedAtUtc = dt.AddHours(2),
+    };
     await AddEntityAndSaveAsync(context, secondToDo);
 
-    var thirdToDo = new ToDo { Name = "Third" };
+    var thirdToDo = new ToDo
+    {
+      Name = "Third",
+      CreatedAtUtc = dt.AddHours(3),
+    };
     await AddEntityAndSaveAsync(context, thirdToDo);
 
     var getToDosQuery = new GetToDosQuery(context);

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Api;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,15 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder
+  .Services.AddControllers()
+  .AddJsonOptions(options =>
+  {
+    options.JsonSerializerOptions.Converters.Add(
+      new JsonStringEnumConverter()
+    );
+  });
+;
 
 builder.Services.AddDependencies(configuration);
 
