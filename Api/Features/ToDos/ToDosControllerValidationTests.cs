@@ -9,7 +9,7 @@ public class ToDosControllerValidationTests(
 ) : ControllerValidationTestsBase(factory)
 {
   [Theory]
-  [MemberData(nameof(CreateToDoReuqestInvalidNamesTestCases))]
+  [MemberData(nameof(CreateToDoReuqestInvalidNameTestCases))]
   public async Task CreateToDoAsync_ShouldThrowBadRequestIfNameIsInvalid(
     string name
   )
@@ -28,7 +28,7 @@ public class ToDosControllerValidationTests(
     );
   }
 
-  public static IEnumerable<object[]> CreateToDoReuqestInvalidNamesTestCases =>
+  public static IEnumerable<object[]> CreateToDoReuqestInvalidNameTestCases =>
     [
       [null!],
       [""],
